@@ -112,7 +112,7 @@ class LocalePicker extends ComponentBase
 
         if ($prefixDefaultLocale) {
 
-            return Redirect::to($this->translator->getCurrentPathInLocale($locale));
+            return Redirect::to($this->translator->getCurrentPathInLocale($locale), 301);
 
         } elseif ( $locale == $this->translator->getDefaultLocale()) {
             return;
