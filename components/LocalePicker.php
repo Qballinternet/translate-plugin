@@ -30,7 +30,7 @@ class LocalePicker extends ComponentBase
      * @var string The active locale name.
      */
     public $activeLocaleName;
-    
+
     /**
      * @var The active locale code before switching.
      */
@@ -80,7 +80,7 @@ class LocalePicker extends ComponentBase
 
         // Remember the current locale before switching to the requested one
         $this->oldLocale = $this->translator->getLocale();
-        
+
         $this->translator->setLocale($locale);
 
         $pageUrl = $this->makeLocaleUrlFromPage($locale);
@@ -151,7 +151,7 @@ class LocalePicker extends ComponentBase
             $router = new RainRouter;
 
             $params = $this->getRouter()->getParameters();
-                        
+
             /**
              * @event translate.localePicker.translateParams
              * Enables manipulating the URL parameters
@@ -166,14 +166,14 @@ class LocalePicker extends ComponentBase
              *         }
              *     });
              *
-             */            
-            $translatedParams = Event::fire('translate.localePicker.translateParams', 
+             */
+            $translatedParams = Event::fire('translate.localePicker.translateParams',
                                             [$page, $params, $this->oldLocale, $locale], true);
-            
+
             if ($translatedParams) {
                 $params = $translatedParams;
             }
-            
+
             $localeUrl = $router->urlFromPattern($page->url, $params);
         }
 
